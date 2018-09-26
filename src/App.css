@@ -1,0 +1,152 @@
+
+/* DEFAULT STYLING */
+body {
+  background-color: rgb(201, 201, 201);
+  color: rgb(60, 60, 60);
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+/* ITEM SUBMISSION FORM */
+.itemform {
+  display: inline-block;
+  width: 25%;
+}
+
+.itemform-wrapper {
+  background-color: whitesmoke;
+  box-shadow: 0 2px 3px rgb(104, 104, 104);
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+}
+.itemform-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+}
+.itemform-row > label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+}
+.itemform-row > input, select {
+  flex: 2;
+}
+.itemform-row > input,
+.itemform-row > button, select {
+  padding: .5em;
+}
+.itemform-row > button {
+ background: orange;
+ border: none; 
+ color: white;
+}
+
+.itemform-row:hover >  button{
+  box-shadow: 0 2px 3px rgb(104, 104, 104);
+ }
+
+/* NAV BAR HEADER */
+.navbar ul { text-align: center; }
+.navbar ul li { 
+  display: inline;
+  font-size: 1.20em;
+  margin-right: 1em;
+  text-decoration: none;
+}
+.navbar ul li a { text-decoration: none; }
+.navbar ul li a:visited { color: rgb(60, 60, 60); }
+.navbar ul li a:hover { color: rgb(187, 138, 47); }
+
+/* SEARCH BAR AND ITEMS TABLE */
+.tableandsearch {
+  margin-top: 20px;
+}
+
+.searchbar {  
+  border-radius: 5px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  width: 400px;
+}
+
+.itemstable {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  max-width: 800px;
+}
+
+.tableheader {  
+  color: rgb(187, 138, 47);
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.tableheader:hover { cursor: pointer; }
+
+.itemrow {
+  height: 6em;
+  margin : auto;
+  border: 1px solid white;
+  padding: 1em;
+  box-shadow: 0 2px 3px rgb(104, 104, 104);
+  text-align: center;
+}
+.itemrow td { font-size: 1.25rem; }
+
+.delete-btn{
+  background: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.delete-btn:hover{
+  background: rgb(228, 41, 41);
+  border: 1px solid rgb(228, 41, 41);
+  cursor: pointer;
+}
+
+.edit-btn{
+  background: rgb(76, 175, 80);
+  border: 1px solid rgb(76, 175, 80);
+  border-radius: 5px;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.edit-btn:hover{
+  background: rgb(81, 163, 84);  
+  border: 1px solid rgb(81, 163, 84);
+  cursor: pointer;
+}
+
+/* STANDARD CREATE-REACT-APP STYLES */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
