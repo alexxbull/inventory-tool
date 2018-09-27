@@ -90,8 +90,8 @@ class ModifyItem extends Component {
                         <select name="condition" value={condition} onChange={this.handleChange} required>
                             <option hidden defaultValue></option>
                             <option value="New">New</option>
-                            <option value="Like-New">Like New</option>
-                            <option value="Gently-Used">Gently Used</option>
+                            <option value="Like New">Like New</option>
+                            <option value="Gently Used">Gently Used</option>
                         </select>
                     </li>
                     <li class="itemform-row">
