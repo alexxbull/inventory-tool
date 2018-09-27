@@ -53,7 +53,11 @@ body {
   margin-right: 1em;
   text-decoration: none;
 }
-.navbar ul li a { text-decoration: none; }
+.navbar ul li a { 
+  color: rgb(60, 60, 60);
+  outline: none;
+  text-decoration: none; 
+}
 .navbar ul li a:visited { color: rgb(60, 60, 60); }
 .navbar ul li a:hover { color: rgb(187, 138, 47); }
 

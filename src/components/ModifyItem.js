@@ -37,13 +37,13 @@ class ModifyItem extends Component {
 
         // if ID is known, edit item
         if (ID) {
-            endpoint = 'http://localhost:8080/items/edit'
+            endpoint = 'https://still-caverns-97420.herokuapp.com/items/edit'
             httpMethod = 'PUT'
         }
         // if ID is not known, add item
         else {
             ID = "0"   // dummy value for ID, database will determine actual ID value
-            endpoint = 'http://localhost:8080/items/add'
+            endpoint = 'https://still-caverns-97420.herokuapp.com/items/add'
             httpMethod = 'POST'
         }
         // send the appropiate request

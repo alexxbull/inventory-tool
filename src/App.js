@@ -26,7 +26,7 @@ class App extends Component {
   // load items from database
   loadItems = async () => {
     try {
-      const response = await fetch('http://localhost:8080/items/view')
+      const response = await fetch('https://still-caverns-97420.herokuapp.com/items/view')
       const items = await response.json()
 
       // sort items by name by default
@@ -50,7 +50,7 @@ class App extends Component {
 
   // delete item with given id
   handleDeleteItem = (id) => () => {
-    fetch("http://localhost:8080/items/delete", {
+    fetch("https://still-caverns-97420.herokuapp.com/items/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json; charset=utf-8;",
