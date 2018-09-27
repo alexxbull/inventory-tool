@@ -1,6 +1,9 @@
 # Inventory Tool
 An inventory tool that adds items to a database that can later be viewed, edited, or removed.
 
+## Website
+https://inventory-tool-react.appspot.com/
+
 ## Features
 - Add items to a database
 - View all items in a table
@@ -21,3 +24,5 @@ An inventory tool that adds items to a database that can later be viewed, edited
 ### TODO
 * Enable multiple users with their own inventory
 * Allow uploading images of items
+* Style with MaterialUI
+* Genericize for tool for custom categories 
