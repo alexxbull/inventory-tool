@@ -21,7 +21,6 @@ class App extends Component {
 
     this.loadItems = this.loadItems.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
-    this.loadItems()
 
     document.title = 'Inventory Tool';
   }
@@ -139,7 +138,8 @@ class App extends Component {
                 sort={this.handleSort}
                 edit={this.handleEditItem}
                 delete={this.handleDeleteItem}
-                items={this.state.itemList} />}
+                items={this.state.itemList}
+                reload={this.loadItems} />}
           />
 
           {/* Add Item Route */}
