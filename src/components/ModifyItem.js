@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
+const serverURL = 'https://still-caverns-97420.herokuapp.com'
+
 class ModifyItem extends Component {
     constructor(props) {
         super(props)
@@ -37,13 +39,13 @@ class ModifyItem extends Component {
 
         // if ID is known, edit item
         if (ID) {
-            endpoint = 'https://still-caverns-97420.herokuapp.com/items/edit'
+            endpoint = `${serverURL}/items/edit`
             httpMethod = 'PUT'
         }
         // if ID is not known, add item
         else {
-            ID = "0"   // dummy value for ID, database will determine actual ID value
-            endpoint = 'https://still-caverns-97420.herokuapp.com/items/add'
+            ID = '0'   // dummy value for ID, database will determine actual ID value
+            endpoint = `${serverURL}/items/add`
             httpMethod = 'POST'
         }
         // send the appropiate request
@@ -71,21 +73,21 @@ class ModifyItem extends Component {
         return (
             <form className="itemform" onSubmit={this.handleSubmit.bind(this)} >
                 <ul className="itemform-wrapper">
-                    <li class="itemform-row">
+                    <li className="itemform-row">
                         <label htmlFor="name">Name:</label>
                         <input type="text" name="name" value={name} onChange={this.handleChange} required />
                     </li>
-                    <li class="itemform-row">
+                    <li className="itemform-row">
                         <label htmlFor="price">Price:</label>
                         <input type="number" name="price" min="0.01" max="99999999" step="0.01" value={price} onChange={this.handleChange} required />
                     </li>
 
-                    <li class="itemform-row">
+                    <li className="itemform-row">
                         <label htmlFor="color">Color:</label>
                         <input type="text" name="color" value={color} onChange={this.handleChange} required />
                     </li>
 
-                    <li class="itemform-row">
+                    <li className="itemform-row">
                         <label htmlFor="condition">Condition:</label>
                         <select name="condition" value={condition} onChange={this.handleChange} required>
                             <option hidden defaultValue></option>
@@ -94,7 +96,7 @@ class ModifyItem extends Component {
                             <option value="Gently Used">Gently Used</option>
                         </select>
                     </li>
-                    <li class="itemform-row">
+                    <li className="itemform-row">
                         <button type="submit">Submit</button>
                     </li>
                 </ul>

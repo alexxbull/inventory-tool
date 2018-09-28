@@ -5,6 +5,9 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Table from './components/Table'
 import NavHeader from './components/NavHeader'
 
+
+const serverURL = 'https://still-caverns-97420.herokuapp.com'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,24 +16,24 @@ class App extends Component {
       editItem: {},
       itemList: [],
       originalList: [],
-      search: "",
+      search: '',
     }
 
     this.loadItems = this.loadItems.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
     this.loadItems()
 
-    document.title = "Inventory Tool";
+    document.title = 'Inventory Tool';
   }
 
   // load items from database
   loadItems = async () => {
     try {
-      const response = await fetch('https://still-caverns-97420.herokuapp.com/items/view')
+      const response = await fetch(`${serverURL}/items/view`)
       const items = await response.json()
 
       // sort items by name by default
-      this.handleSort("name", items)(null)
+      this.handleSort('name', items)(null)
       this.setState(
         {
           itemList: items,
@@ -38,7 +41,7 @@ class App extends Component {
         })
     }
     catch (err) {
-      console.log("error", err)
+      console.log('error', err)
     }
   }
 
@@ -50,7 +53,7 @@ class App extends Component {
 
   // delete item with given id
   handleDeleteItem = (id) => () => {
-    fetch("https://still-caverns-97420.herokuapp.com/items/delete", {
+    fetch(`${serverURL}/items/delete`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json; charset=utf-8;",
@@ -82,19 +85,19 @@ class App extends Component {
 
     // sort table rows
     switch (type) {
-      case "name":
+      case 'name':
         newItems.sort((a, b) => stringSort(a.Name.toLowerCase(), b.Name.toLowerCase()))
         break;
 
-      case "price":
+      case 'price':
         newItems.sort((a, b) => a.Price - b.Price)
         break;
 
-      case "color":
+      case 'color':
         newItems.sort((a, b) => stringSort(a.Color.toLowerCase(), b.Color.toLowerCase()))
         break;
 
-      case "condition":
+      case 'condition':
         newItems.sort((a, b) => stringSort(a.Condition.toLowerCase(), b.Condition.toLowerCase()))
         break;
 
