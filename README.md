@@ -2,7 +2,7 @@
 An inventory tool that adds items to a database that can later be viewed, edited, or removed.
 
 ## Website
-https://inventory-tool-react.appspot.com/
+https://blooming-ravine-27911.herokuapp.com/
 
 ## Features
 - Add items to a database
