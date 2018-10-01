@@ -1,4 +1,3 @@
-
 /* DEFAULT STYLING */
 body {
   background-color: rgb(201, 201, 201);
@@ -6,44 +5,83 @@ body {
   font-family: Tahoma, Geneva, sans-serif;
 }
 
-/* ITEM SUBMISSION FORM */
-.itemform {
-  display: inline-block;
-  width: 25%;
-}
-
-.itemform-wrapper {
-  background-color: whitesmoke;
-  box-shadow: 0 2px 3px rgb(104, 104, 104);
-  list-style-type: none;
-  padding: 0;
-  border-radius: 3px;
-}
-.itemform-row {
+/* align in the middle of the page*/
+.middle {
   display: flex;
-  justify-content: flex-end;
-  padding: .5em;
-}
-.itemform-row > label {
-  padding: .5em 1em .5em 0;
-  flex: 1;
-}
-.itemform-row > input, select {
-  flex: 2;
-}
-.itemform-row > input,
-.itemform-row > button, select {
-  padding: .5em;
-}
-.itemform-row > button {
- background: orange;
- border: none; 
- color: white;
+  justify-content: center;
 }
 
-.itemform-row:hover >  button{
+/* align in the center of the page */
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+/* FORM STYLING - USER FORM AND ITEM FORM */
+
+form {
+  border: 1px solid rgb(60, 60, 60);
+  box-shadow: 0 2px 3px rgb(104, 104, 104);``
+  max-width: 800px;
+}
+
+form > div{
+  padding: 16px;
+}
+
+.form-title {
+  font-size: 3rem;
+  text-align: center;
+}
+
+form label{
+ float: left;
+ font-weight: bold;
+}
+
+/* Full-width inputs */
+form input, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+
+form input:focus, form input:hover, form select:focus, form input:hover {
+  background: beige;
+}
+
+/* Set a style for all buttons */
+form button {
+  background-color: cornflowerblue;
+  border-radius: 25px;
+  color: white;
+  font-size: 1em;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  max-width: 60%;  
+  text-decoration: none; 
+  border: 0;
+  outline: none;
+}
+
+.register-btn {
+  background: orchid;
+  margin-left: 5%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
   box-shadow: 0 2px 3px rgb(104, 104, 104);
- }
+}
 
 /* NAV BAR HEADER */
 .navbar ul { text-align: center; }
@@ -77,6 +115,7 @@ body {
   width: 70%;
   height: auto;
   margin: auto;
+  /* margin: 20px auto auto auto; */
   max-width: 800px;
 }
 
@@ -123,34 +162,4 @@ body {
   background: rgb(81, 163, 84);  
   border: 1px solid rgb(81, 163, 84);
   cursor: pointer;
-}
-
-/* STANDARD CREATE-REACT-APP STYLES */
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

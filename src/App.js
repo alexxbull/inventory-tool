@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import ModifyItem from './components/ModifyItem'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Table from './components/Table'
 import NavHeader from './components/NavHeader'
+import UserForm from './components/UserForm'
 
-
+// const serverURL = 'http://localhost:8080'
 const serverURL = 'https://still-caverns-97420.herokuapp.com'
 
 class App extends Component {
@@ -17,94 +18,37 @@ class App extends Component {
       itemList: [],
       originalList: [],
       search: '',
+      UserID: '',
     }
 
     this.loadItems = this.loadItems.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this)
 
-    document.title = 'Inventory Tool';
+    document.title = 'Inventory Tool'
   }
 
-  // load items from database
-  loadItems = async () => {
-    try {
-      const response = await fetch(`${serverURL}/items/view`)
-      const items = await response.json()
 
-      // sort items by name by default
-      this.handleSort('name', items)(null)
-      this.setState(
-        {
-          itemList: items,
-          originalList: items,
-        })
-    }
-    catch (err) {
-      console.log('error', err)
-    }
+
+  // delete item with given id
+  handleDeleteItem = (ID) => () => {
+    fetch(`${serverURL}/items/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json charset=utf-8",
+        "ID": ID.toString(),
+      },
+    })
+
+    // remove deleted item from list
+    const newItems = this.state.itemList.filter(item => item.ID !== ID)
+    this.setState({ itemList: newItems })
   }
 
   // handle edit events
   handleEditItem = (item) => () => {
     // save the item to edit
     this.setState({ editItem: item })
-  }
-
-  // delete item with given id
-  handleDeleteItem = (id) => () => {
-    fetch(`${serverURL}/items/delete`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8;",
-        "ID": id.toString(),
-      },
-    })
-
-    // remove deleted item from list
-    const newItems = this.state.itemList.filter(item => item.ID !== id)
-    this.setState({ itemList: newItems })
-  }
-
-  // sort table rows based on the column header clicked
-  handleSort = (type = null, newItems = null) => () => {
-    // make a copy of the current list of items
-    if (!newItems)
-      newItems = [...this.state.itemList];
-
-    // sort function for strings
-    const stringSort = (a, b) => {
-      if (a < b)
-        return -1;
-
-      if (a > b)
-        return 1;
-
-      return 0
-    }
-
-    // sort table rows
-    switch (type) {
-      case 'name':
-        newItems.sort((a, b) => stringSort(a.Name.toLowerCase(), b.Name.toLowerCase()))
-        break;
-
-      case 'price':
-        newItems.sort((a, b) => a.Price - b.Price)
-        break;
-
-      case 'color':
-        newItems.sort((a, b) => stringSort(a.Color.toLowerCase(), b.Color.toLowerCase()))
-        break;
-
-      case 'condition':
-        newItems.sort((a, b) => stringSort(a.Condition.toLowerCase(), b.Condition.toLowerCase()))
-        break;
-
-      default:
-        break;
-    }
-
-    this.setState({ itemList: newItems })
   }
 
   // display only items matching search term
@@ -123,50 +67,138 @@ class App extends Component {
     }
   }
 
+  // sign out current user
+  handleSignOut = () => {
+    this.setState({ UserID: '' })
+  }
+
+  // sort table rows based on the column header clicked
+  handleSort = (type = null, newItems = null) => () => {
+    // make a copy of the current list of items
+    if (!newItems)
+      newItems = [...this.state.itemList]
+
+    // sort function for strings
+    const stringSort = (a, b) => {
+      if (a < b)
+        return -1
+
+      if (a > b)
+        return 1
+
+      return 0
+    }
+
+    // sort table rows
+    switch (type) {
+      case 'Name':
+        newItems.sort((a, b) => stringSort(a.Name.toLowerCase(), b.Name.toLowerCase()))
+        break
+
+      case 'Price':
+        newItems.sort((a, b) => a.Price - b.Price)
+        break
+
+      case 'Color':
+        newItems.sort((a, b) => stringSort(a.Color.toLowerCase(), b.Color.toLowerCase()))
+        break
+
+      case 'Condition':
+        newItems.sort((a, b) => stringSort(a.Condition.toLowerCase(), b.Condition.toLowerCase()))
+        break
+
+      default:
+        break
+    }
+
+    this.setState({ itemList: newItems })
+  }
+
+
+  // load the user's list 
+  loadUser = (UserID) => {
+    this.setState({ UserID: UserID })
+  }
+
+  // load items from database
+  loadItems = async () => {
+    try {
+      const response = await fetch(`${serverURL}/items/view`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'UserID': this.state.UserID,
+        }
+      })
+      const items = await response.json()
+
+      // sort items by name by default
+      this.handleSort('Name', items)(null)
+      this.setState(
+        {
+          itemList: items,
+          originalList: items,
+        })
+    }
+    catch (err) {
+      console.log('error', err)
+    }
+  }
+
   render() {
+    const { editItem, itemList, UserID } = this.state
+
     return (
       <BrowserRouter>
-        <div className="App">
-          <NavHeader />
+        <div>
+          {/* show login page if no UserID is set */
+            !UserID
+              ?
+              <UserForm loadUser={this.loadUser} />
+              :
+              /* show list of user's items */
+              <div>
+                <NavHeader
+                  UserID={UserID}
+                  SignOut={this.handleSignOut} />
+                {/* Table Display */}
+                < Route
+                  path={`/profile/${UserID}/viewitems`} exact
+                  render={(props) =>
+                    <Table {...props}
+                      search={this.handleSearch.bind(this)}
+                      sort={this.handleSort}
+                      edit={this.handleEditItem}
+                      delete={this.handleDeleteItem}
+                      items={itemList}
+                      reload={this.loadItems}
+                      UserID={UserID} />}
+                />
 
-          {/* Table Display */}
-          <Route
-            path="/viewitems" exact
-            render={(props) =>
-              <Table {...props}
-                search={this.handleSearch.bind(this)}
-                sort={this.handleSort}
-                edit={this.handleEditItem}
-                delete={this.handleDeleteItem}
-                items={this.state.itemList}
-                reload={this.loadItems} />}
-          />
+                {/* add ttem route */}
+                <Route
+                  path={`/profile/${UserID}/additem`} exact
+                  render={(props) =>
+                    <ModifyItem {...props}
+                      reloadItems={this.loadItems}
+                      UserID={UserID} />}
+                />
 
-          {/* Add Item Route */}
-          <Route
-            path="/" exact
-            render={(props) =>
-              <ModifyItem {...props}
-                reloadItems={this.loadItems} />}
-          />
-
-          {/* Edit Item Route */}
-          <Route
-            path="/edititem" exact
-            render={(props) =>
-              <ModifyItem {...props}
-                item={this.state.editItem}
-                ID={JSON.parse(this.state.editItem).ID}
-                Name={JSON.parse(this.state.editItem).Name}
-                Price={JSON.parse(this.state.editItem).Price}
-                Color={JSON.parse(this.state.editItem).Color}
-                Condition={JSON.parse(this.state.editItem).Condition}
-                reloadItems={this.loadItems} />}
-          />
+                {/* edit item route */}
+                <Route
+                  path={`/profile/${UserID}/edititem`} exact
+                  render={(props) =>
+                    <ModifyItem {...props}
+                      item={editItem}
+                      UserID={UserID}
+                      reloadItems={this.loadItems} />}
+                />
+              </div>
+          }
         </div >
       </BrowserRouter>
-    );
+    )
   }
 }
 
-export default App;
+export default App

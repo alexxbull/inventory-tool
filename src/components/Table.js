@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Item from './Item'
 import SearchBar from './SearchBar'
 import TableHeader from './TableHeader'

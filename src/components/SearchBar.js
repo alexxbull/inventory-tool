@@ -2,7 +2,7 @@ import React from 'react'
 
 const searchBar = (props) => {
     return (
-        <div>
+        <div className="middle">
             <input className="searchbar" type="text" placeholder="Search by name" onChange={props.change} />
         </div>
     )
