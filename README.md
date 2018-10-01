@@ -11,6 +11,7 @@ https://blooming-ravine-27911.herokuapp.com/
 - Sort items by name, price, color, or condition (click header category)
 - Edit items
 - Delete items
+- Mutli-user support
 
 ## Backend
 [Source](https://github.com/alexxbull/inventory-tool-backend)
