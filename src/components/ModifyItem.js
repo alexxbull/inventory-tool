@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-const serverURL = 'http://localhost:8080'
-// const serverURL = 'https://still-caverns-97420.herokuapp.com'
+// const serverURL = 'http://localhost:8080'
+const serverURL = 'https://still-caverns-97420.herokuapp.com'
 
 class ModifyItem extends Component {
     constructor(props) {
