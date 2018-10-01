@@ -21,7 +21,7 @@ https://blooming-ravine-27911.herokuapp.com/
 ![Register](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/register.png)
 ![Add Item](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/additem.png)
 ![View Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/viewitems.png)
-![Search Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/searchitems.png)
+![Search Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/search.png)
 
 ### TODO
 * Enable multiple users with their own inventory
