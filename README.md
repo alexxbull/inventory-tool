@@ -17,6 +17,8 @@ https://blooming-ravine-27911.herokuapp.com/
 
 
 ### Screenshots
+![Login](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/login.png)
+![Register](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/register.png)
 ![Add Item](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/additem.png)
 ![View Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/viewitems.png)
 ![Search Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/searchitems.png)
