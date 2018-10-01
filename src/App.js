@@ -69,7 +69,13 @@ class App extends Component {
 
   // sign out current user
   handleSignOut = () => {
-    this.setState({ UserID: '' })
+    this.setState({
+      editItem: {},
+      itemList: [],
+      originalList: [],
+      search: '',
+      UserID: '',
+    })
   }
 
   // sort table rows based on the column header clicked
