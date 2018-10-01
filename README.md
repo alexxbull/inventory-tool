@@ -24,7 +24,6 @@ https://blooming-ravine-27911.herokuapp.com/
 ![Search Items](https://github.com/alexxbull/inventory-tool/blob/master/screenshots/search.png)
 
 ### TODO
-* Enable multiple users with their own inventory
+* ~~Enable multiple users with their own inventory~~
 * Allow uploading images of items
 * Style with MaterialUI
-* Genericize for tool for custom categories 
