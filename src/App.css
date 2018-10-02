@@ -115,7 +115,6 @@ button:hover {
   width: 70%;
   height: auto;
   margin: auto;
-  /* margin: 20px auto auto auto; */
   max-width: 800px;
 }
 
@@ -129,7 +128,6 @@ button:hover {
 .itemrow {
   height: 6em;
   margin : auto;
-  border: 1px solid white;
   padding: 1em;
   box-shadow: 0 2px 3px rgb(104, 104, 104);
   text-align: center;
